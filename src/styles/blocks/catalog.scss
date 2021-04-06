@@ -1,13 +1,13 @@
-main {
-  @extend %flex-center;
-}
-
 .catalog-wrapper {
-  @extend %flex-between;
-  flex-wrap: wrap;
-  max-width: 1024px;
-  padding: 50px 40px;
-  gap: 48px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill,200px);
+  gap: 50px 48px;
+  padding: 0 40px;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 200px);
+  }
 }
 
 .card {
@@ -17,16 +17,15 @@ main {
   border-radius: 5px;
   
   &__product-image {
-    height: 134px;
     width: 160px;
-    margin: 15px 5px 45px;
-    @extend %flex-center;
+    height: 134px;
+    margin: 15px 5px 40px;
     transition: transform 400ms;
   
     &:hover {
       box-sizing: content-box;
       transform: scale(1.2);
-      margin: 0 2px 30px;
+      margin: 0 2px 25px;
       padding: 12px 0;
       border: 3px solid #f3f3f3;
     }
@@ -34,31 +33,36 @@ main {
   
   &__product-name {
     @include productNameText(500);
-    margin-bottom: 6px;
+    margin-bottom: 7px;
   }
   
   &__product-code {
     font-size: 11px;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
   }
   
   &__rating-container {
-    @extend %flex-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     margin-bottom: 20px;
   }
   
   &__product-reviews {
     font-size: 11px;
+    text-align: end;
   }
   
   &__product-stars {
-    @extend %flex-center;
+    display: grid;
+    grid-template-columns: repeat(5,15px);
+    gap: 4px;
     align-items: center;
   }
   
   &__product-price {
-    @extend %flex-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: baseline;
     font-size: 11px;
     margin-bottom: 20px;
@@ -66,21 +70,21 @@ main {
   
   &__product-price-value {
     @include productPriceValue(700);
+    text-align: end;
   }
   
   &__button {
-    @extend %flex-center;
-    align-items: center;
-    height: 40px;
-    font-weight: 700;
+    display: block;
     font-size: 14px;
+    line-height: 38px;
+    font-weight: 700;
     text-align: center;
     text-decoration: none;
     color: #fff;
     background-color: $scnd-color;
     border-radius: 5px;
     border: 1px solid $scnd-color;
-    transition: 400ms;
+    transition: background-color 400ms;
 
     &:hover {
       color: $scnd-color;
